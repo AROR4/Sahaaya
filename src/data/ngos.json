@@ -1,0 +1,62 @@
+[
+  {
+    "id": "ngo001",
+    "name": "GreenCare Trust",
+    "category": "Environment",
+    "location": "Chennai",
+    "impact": "Planted 10,000+ trees",
+    "contact_email": "greencare@example.org",
+    "verified": true,
+    "description": "Dedicated to environmental conservation and sustainable development in Tamil Nadu.",
+    "founded": "2018",
+    "volunteers": 250
+  },
+  {
+    "id": "ngo002",
+    "name": "Books4India",
+    "category": "Education",
+    "location": "Sonipat",
+    "impact": "Donated over 15,000 books in rural Haryana",
+    "contact_email": "books4india@example.org",
+    "verified": true,
+    "description": "Promoting literacy and education access in underserved communities.",
+    "founded": "2020",
+    "volunteers": 180
+  },
+  {
+    "id": "ngo003",
+    "name": "PawsCare India",
+    "category": "Animal Welfare",
+    "location": "Bangalore",
+    "impact": "Vaccinated 5,000+ stray animals",
+    "contact_email": "pawscare@example.org",
+    "verified": true,
+    "description": "Working towards the welfare and protection of stray animals across India.",
+    "founded": "2017",
+    "volunteers": 320
+  },
+  {
+    "id": "ngo004",
+    "name": "TechForAll Foundation",
+    "category": "Education",
+    "location": "Gurgaon",
+    "impact": "Trained 2,000+ seniors in digital literacy",
+    "contact_email": "info@techforall.org",
+    "verified": true,
+    "description": "Bridging the digital divide through technology education and training.",
+    "founded": "2019",
+    "volunteers": 95
+  },
+  {
+    "id": "ngo005",
+    "name": "Urban Green Initiative",
+    "category": "Environment",
+    "location": "Mumbai",
+    "impact": "Created 500+ urban gardens",
+    "contact_email": "green@urbangreen.org",
+    "verified": true,
+    "description": "Transforming urban spaces into green, sustainable environments.",
+    "founded": "2021",
+    "volunteers": 150
+  }
+]

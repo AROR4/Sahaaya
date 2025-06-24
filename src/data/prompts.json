@@ -1,0 +1,32 @@
+[
+  {
+    "intent": "find_campaign",
+    "user_prompt": "I want to volunteer near me",
+    "response_template": "Great! You can check the 'Discover Campaigns' page to find popular events in your area. Would you like to filter by environment, education, or animal welfare?"
+  },
+  {
+    "intent": "create_campaign_help",
+    "user_prompt": "How can I start my own campaign?",
+    "response_template": "To start a campaign, go to the 'Create Campaign' page. First, verify your government ID, then fill in your campaign details including title, category, and location. Once submitted, your campaign will be reviewed."
+  },
+  {
+    "intent": "ngo_info",
+    "user_prompt": "Can I find NGOs nearby?",
+    "response_template": "Yes! Visit the 'NGO Discovery' section to see a list of verified NGOs based on your location. You can choose to support them or contact them for volunteering."
+  },
+  {
+    "intent": "platform_help",
+    "user_prompt": "What does Sahaaya do?",
+    "response_template": "Sahaaya is a platform that connects individuals with social campaigns and NGOs. You can volunteer, create your own initiatives, donate, and track your impact—all in one place."
+  },
+  {
+    "intent": "donation_help",
+    "user_prompt": "Can I donate to causes directly?",
+    "response_template": "Absolutely! Donation functionality is coming soon. In future versions, you'll be able to support NGOs and verified campaigns with complete transparency."
+  },
+  {
+    "intent": "getting_started",
+    "user_prompt": "I'm new here, how do I get started?",
+    "response_template": "Welcome to Sahaaya! Start by browsing campaigns on our 'Discover' page, or if you have a cause in mind, create your own campaign. You can also explore verified NGOs in your area. What interests you most?"
+  }
+]

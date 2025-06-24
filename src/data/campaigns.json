@@ -1,0 +1,72 @@
+[
+  {
+    "id": "cmp001",
+    "title": "Clean Marina Beach Drive",
+    "description": "Join our effort to clean up one of the most polluted beaches in Chennai. We're organizing a massive cleanup drive with over 500 volunteers expected to participate.",
+    "category": "Environment",
+    "location": "Chennai",
+    "date": "2025-07-01",
+    "popularity_score": 92,
+    "image_url": "https://images.pexels.com/photos/2547565/pexels-photo-2547565.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "creator": "Suresh V",
+    "verified": true,
+    "participants": 342,
+    "target": 500
+  },
+  {
+    "id": "cmp002",
+    "title": "Books for All",
+    "description": "Help us collect books for underprivileged students in Sonipat. Every book donated can change a child's future.",
+    "category": "Education",
+    "location": "Sonipat",
+    "date": "2025-06-30",
+    "popularity_score": 81,
+    "image_url": "https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "creator": "Raghav Arora",
+    "verified": true,
+    "participants": 156,
+    "target": 200
+  },
+  {
+    "id": "cmp003",
+    "title": "Stray Dog Vaccination Camp",
+    "description": "Support our NGO in vaccinating over 100 street dogs in Bangalore. Help us create a safer community for both animals and humans.",
+    "category": "Animal Welfare",
+    "location": "Bangalore",
+    "date": "2025-07-05",
+    "popularity_score": 87,
+    "image_url": "https://images.pexels.com/photos/7210754/pexels-photo-7210754.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "creator": "PawsCare",
+    "verified": true,
+    "participants": 89,
+    "target": 120
+  },
+  {
+    "id": "cmp004",
+    "title": "Digital Literacy for Seniors",
+    "description": "Teaching basic smartphone and internet skills to senior citizens in rural areas.",
+    "category": "Education",
+    "location": "Gurgaon",
+    "date": "2025-07-10",
+    "popularity_score": 76,
+    "image_url": "https://images.pexels.com/photos/5212317/pexels-photo-5212317.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "creator": "TechForAll",
+    "verified": true,
+    "participants": 45,
+    "target": 80
+  },
+  {
+    "id": "cmp005",
+    "title": "Urban Farming Initiative",
+    "description": "Setting up rooftop gardens in urban apartments to promote sustainable living.",
+    "category": "Environment",
+    "location": "Mumbai",
+    "date": "2025-07-15",
+    "popularity_score": 84,
+    "image_url": "https://images.pexels.com/photos/4503270/pexels-photo-4503270.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "creator": "GreenSpaces Mumbai",
+    "verified": true,
+    "participants": 78,
+    "target": 100
+  }
+]
