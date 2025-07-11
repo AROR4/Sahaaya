@@ -5,11 +5,15 @@ const campaignSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  description: String,
+
+  description: {
+    type: String,
+    required: true
+  },
 
   category: {
     type: String,
-    enum: ['Environment', 'Education', 'Animal Welfare', 'Other'],
+    enum: ['Environment', 'Education', 'Animal Welfare', 'Healthcare', 'Other'],
     default: 'Other'
   },
 
@@ -20,11 +24,30 @@ const campaignSchema = new mongoose.Schema({
     required: true
   },
 
+  submittedDate: {
+    type: Date,
+    default: Date.now
+  },
+
   image_url: String,
 
-  target: {
+  targetParticipants: {
     type: Number,
     required: true
+  },
+
+  estimatedBudget: {
+    type: Number,
+    required: true
+  },
+
+  documents: [{
+    type: String // array of document URLs
+  }],
+
+  contact: {
+    phone: { type: String },
+    email: { type: String }
   },
 
   participants: [{
@@ -43,10 +66,26 @@ const campaignSchema = new mongoose.Schema({
     default: false
   },
 
+  status: {
+    type: String,
+    enum: ['pending', 'approved', 'rejected'],
+    default: 'pending'
+  },
+
+  isNgoAffiliated: {
+    type: Boolean,
+    default: false
+  },
+
+  ngoDetails: {
+    name: { type: String },
+    location: { type: String }
+  },
+
   popularity_score: {
     type: Number,
     default: 0
-  },
+  }
 
 }, {
   timestamps: true

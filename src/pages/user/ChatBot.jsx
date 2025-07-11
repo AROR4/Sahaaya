@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Send, Bot, User, Lightbulb } from 'lucide-react';
-import promptsData from '../data/prompts.json';
+import promptsData from '../../data/prompts.json';
 
 const ChatBot = () => {
   const [messages, setMessages] = useState([

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Search, MapPin, Filter } from 'lucide-react';
-import NGOCard from '../components/NGOCard';
-import ngosData from '../data/ngos.json';
+import NGOCard from '../../components/NGOCard';
+import ngosData from '../../data/ngos.json';
 
 const NGODiscovery = () => {
   const [ngos, setNgos] = useState([]);

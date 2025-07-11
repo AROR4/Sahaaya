@@ -5,6 +5,14 @@ const userSchema = new mongoose.Schema({
   name: String,
   picture: String,
 
+  role: {
+    type: String,
+    enum: ['admin', 'user'],
+    default: 'user',
+  },
+
+  authProvider: { type: String, default: 'google' },
+
   createdCampaigns: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Campaign'
@@ -15,10 +23,15 @@ const userSchema = new mongoose.Schema({
     ref: 'Campaign'
   }],
 
+  govtIdUrl: {
+    type: String,
+    default: null
+  },
+
   isGovtIdVerified: {
     type: Boolean,
     default: false
   }
-});
+}, { timestamps: true });
 
 module.exports = mongoose.model('User', userSchema);

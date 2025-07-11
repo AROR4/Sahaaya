@@ -1,29 +1,39 @@
-
 import React from 'react';
 import { MapPin, Calendar, Users, CheckCircle } from 'lucide-react';
 
 const CampaignCard = ({ campaign, featured = false }) => {
-  const progressPercentage = Math.round((campaign.participants / campaign.target) * 100);
-    if (!campaign || typeof campaign.participants !== 'number' || typeof campaign.target !== 'number') {
-    return null; // or a fallback <div>Invalid Campaign Data</div>
-    }
+  // Validate required data
+  if (
+    !campaign ||
+    !Array.isArray(campaign.participants) ||
+    typeof campaign.targetParticipants !== 'number'
+  ) {
+    return <div className="p-4 text-red-500">Invalid Campaign Data</div>;
+  }
+
+  const progressPercentage = Math.round(
+    (campaign.participants.length / campaign.targetParticipants) * 100
+  );
 
   return (
     <div className={`bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden group ${
       featured ? 'ring-2 ring-blue-500' : ''
     }`}>
+      {/* Featured Banner */}
       {featured && (
         <div className="bg-gradient-to-r from-blue-600 to-emerald-600 text-white px-4 py-2 text-sm font-medium">
           ⭐ Featured Campaign
         </div>
       )}
-      
+
+      {/* Campaign Image */}
       <div className="relative">
         <img 
           src={campaign.image_url} 
           alt={campaign.title}
           className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
         />
+        {/* Category Badge */}
         <div className="absolute top-3 right-3">
           <span className={`px-3 py-1 rounded-full text-xs font-medium ${
             campaign.category === 'Environment' ? 'bg-green-100 text-green-800' :
@@ -36,7 +46,9 @@ const CampaignCard = ({ campaign, featured = false }) => {
         </div>
       </div>
 
+      {/* Campaign Info */}
       <div className="p-6">
+        {/* Title + Verified */}
         <div className="flex items-start justify-between mb-3">
           <h3 className="text-lg font-semibold text-gray-900 line-clamp-2 group-hover:text-blue-600 transition-colors">
             {campaign.title}
@@ -46,10 +58,12 @@ const CampaignCard = ({ campaign, featured = false }) => {
           )}
         </div>
 
+        {/* Description */}
         <p className="text-gray-600 text-sm mb-4 line-clamp-2">
           {campaign.description}
         </p>
 
+        {/* Metadata */}
         <div className="space-y-2 mb-4">
           <div className="flex items-center text-sm text-gray-500">
             <MapPin className="w-4 h-4 mr-2" />
@@ -65,7 +79,7 @@ const CampaignCard = ({ campaign, featured = false }) => {
           </div>
           <div className="flex items-center text-sm text-gray-500">
             <Users className="w-4 h-4 mr-2" />
-            <span>{campaign.participants} / {campaign.target} participants</span>
+            <span>{campaign.participants.length} / {campaign.targetParticipants} participants</span>
           </div>
         </div>
 
@@ -83,8 +97,11 @@ const CampaignCard = ({ campaign, featured = false }) => {
           </div>
         </div>
 
+        {/* Footer */}
         <div className="flex items-center justify-between">
-          <span className="text-sm text-gray-500">by {campaign.creator}</span>
+          <span className="text-sm text-gray-500">
+            by {campaign.creator?.name || campaign.creator?.email || 'Unknown'}
+          </span>
           <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
             Join Campaign
           </button>

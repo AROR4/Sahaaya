@@ -1,0 +1,91 @@
+{
+  "stats": {
+    "totalUsers": 12847,
+    "totalCampaigns": 1256,
+    "activeCampaigns": 342,
+    "completedCampaigns": 914,
+    "totalDonations": 2847500,
+    "totalVolunteers": 8934
+  },
+  "monthlyData": [
+    { "month": "Aug 2024", "campaigns": 45, "users": 234, "donations": 125000 },
+    { "month": "Sep 2024", "campaigns": 67, "users": 456, "donations": 189000 },
+    { "month": "Oct 2024", "campaigns": 89, "users": 678, "donations": 267000 },
+    { "month": "Nov 2024", "campaigns": 123, "users": 892, "donations": 345000 },
+    { "month": "Dec 2024", "campaigns": 156, "users": 1234, "donations": 456000 }
+  ],
+  "pendingCampaigns": [
+    {
+      "id": "pending001",
+      "title": "Digital Education for Rural Kids",
+      "description": "Setting up computer labs in 5 rural schools to provide digital literacy training for children aged 8-16. We aim to bridge the digital divide and prepare these kids for the modern world.",
+      "category": "Education",
+      "location": "Rajasthan",
+      "date": "2025-02-15",
+      "creator": "Priya Sharma",
+      "creatorEmail": "priya.sharma@email.com",
+      "creatorPhone": "+91-9876543210",
+      "targetParticipants": 200,
+      "estimatedBudget": 150000,
+      "submittedDate": "2025-01-10",
+      "idVerified": true,
+      "documents": ["id_proof.jpg", "project_proposal.pdf"],
+      "image_url": "https://images.pexels.com/photos/5212317/pexels-photo-5212317.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "status": "pending"
+    },
+    {
+      "id": "pending002",
+      "title": "Plastic-Free Goa Initiative",
+      "description": "A comprehensive campaign to eliminate single-use plastics from Goa's beaches and tourist areas. Includes awareness drives, alternative product distribution, and waste collection programs.",
+      "category": "Environment",
+      "location": "Goa",
+      "date": "2025-03-01",
+      "creator": "Arjun Menon",
+      "creatorEmail": "arjun.menon@email.com",
+      "creatorPhone": "+91-8765432109",
+      "targetParticipants": 500,
+      "estimatedBudget": 300000,
+      "submittedDate": "2025-01-08",
+      "idVerified": true,
+      "documents": ["id_proof.jpg", "environmental_impact.pdf", "budget_breakdown.xlsx"],
+      "image_url": "https://images.pexels.com/photos/2547565/pexels-photo-2547565.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "status": "pending"
+    },
+    {
+      "id": "pending003",
+      "title": "Senior Citizen Health Checkup Drive",
+      "description": "Free health checkups and medical consultations for senior citizens in urban slums. Partnering with local hospitals to provide basic healthcare services to underserved elderly population.",
+      "category": "Healthcare",
+      "location": "Mumbai",
+      "date": "2025-02-20",
+      "creator": "Dr. Kavita Patel",
+      "creatorEmail": "dr.kavita@email.com",
+      "creatorPhone": "+91-7654321098",
+      "targetParticipants": 150,
+      "estimatedBudget": 75000,
+      "submittedDate": "2025-01-12",
+      "idVerified": true,
+      "documents": ["medical_license.jpg", "hospital_partnership.pdf"],
+      "image_url": "https://images.pexels.com/photos/5452293/pexels-photo-5452293.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "status": "pending"
+    },
+    {
+      "id": "pending004",
+      "title": "Street Dog Sterilization Program",
+      "description": "Comprehensive sterilization and vaccination program for street dogs in Pune. Aims to control population humanely while ensuring the health and safety of both animals and residents.",
+      "category": "Animal Welfare",
+      "location": "Pune",
+      "date": "2025-02-28",
+      "creator": "Animal Welfare Society",
+      "creatorEmail": "contact@animalwelfare.org",
+      "creatorPhone": "+91-6543210987",
+      "targetParticipants": 80,
+      "estimatedBudget": 200000,
+      "submittedDate": "2025-01-05",
+      "idVerified": true,
+      "documents": ["ngo_registration.pdf", "veterinary_partnership.pdf"],
+      "image_url": "https://images.pexels.com/photos/7210754/pexels-photo-7210754.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "status": "pending"
+    }
+  ]
+}

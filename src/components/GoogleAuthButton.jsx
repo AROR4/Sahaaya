@@ -19,9 +19,7 @@ const GoogleAuthButton = ({ endpoint, onSuccess }) => {
 
             const data = await res.json();
             if (data.user) {
-              localStorage.setItem("user", JSON.stringify(data.user));
               login(data.user);
-              
               onSuccess();
             } else {
               alert(data.message || "Failed");

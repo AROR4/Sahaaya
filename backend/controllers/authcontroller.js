@@ -46,9 +46,12 @@ exports.signup = async (req, res) => {
 
     res.status(201).json({
       user: {
+        _id: newUser._id,
         name: newUser.name,
         email: newUser.email,
         picture: newUser.picture,
+        role: newUser.role,
+        isGovtIdVerified: newUser.isGovtIdVerified,
         token,
       },
     });
@@ -77,12 +80,16 @@ exports.login = async (req, res) => {
     const token = jwt.sign({ email: existingUser.email }, process.env.JWT_SECRET, {
       expiresIn: '1d',
     });
+    console.log("token", token);
 
     res.status(200).json({
       user: {
+        _id: existingUser._id,
         name: existingUser.name,
         email: existingUser.email,
         picture: existingUser.picture,
+        role: existingUser.role,
+        isGovtIdVerified: existingUser.isGovtIdVerified,
         token,
       },
     });
