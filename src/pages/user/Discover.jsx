@@ -2,14 +2,34 @@ import React, { useState, useEffect } from "react";
 import { Search, Filter } from "lucide-react";
 import CampaignCard from "../../components/CampaignCard";
 import axios from "axios";
+import { useAuth } from "../../context/AuthContext";
 
 const Discover = () => {
+  const { user } = useAuth();
   const [campaigns, setCampaigns] = useState([]);
   const [filteredCampaigns, setFilteredCampaigns] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedLocation, setSelectedLocation] = useState("All");
   const [sortBy, setSortBy] = useState("popularity");
+  const [loading, setLoading] = useState(false);
+
+  const handleJoin = (campaignId) => {
+    setCampaigns(prevCampaigns => 
+      prevCampaigns.map(campaign => 
+        campaign._id === campaignId 
+          ? { ...campaign, isJoined: true, participants: [...campaign.participants, user] }
+          : campaign
+      )
+    );
+    setFilteredCampaigns(prevCampaigns => 
+      prevCampaigns.map(campaign => 
+        campaign._id === campaignId 
+          ? { ...campaign, isJoined: true, participants: [...campaign.participants, user] }
+          : campaign
+      )
+    );
+  };
 
   const categories = [
     "All",
@@ -24,7 +44,12 @@ const Discover = () => {
   useEffect(() => {
     const fetchCampaigns = async () => {
       try {
-        const { data } = await axios.get("http://localhost:5152/api/campaigns");
+        setLoading(true);
+        const headers = user ? { 
+          Authorization: `Bearer ${user.token}` 
+        } : {};
+        
+        const { data } = await axios.get("http://localhost:5152/api/campaigns", { headers });
         const approved = data.filter(
           (campaign) => campaign.status === "approved"
         );
@@ -38,14 +63,16 @@ const Discover = () => {
         });
 
         const cityList = ["All", ...Array.from(citySet).sort()];
-        setLocations(cityList); // You'll need to make locations stateful
+        setLocations(cityList);
       } catch (error) {
         console.error("Failed to fetch campaigns:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchCampaigns();
-  }, []);
+  }, [user]);
 
   useEffect(() => {
     let filtered = campaigns.filter((campaign) => {
@@ -184,7 +211,7 @@ const Discover = () => {
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
               Featured Campaign
             </h2>
-            <CampaignCard campaign={featuredCampaign} featured />
+            <CampaignCard campaign={featuredCampaign} featured currentUser={user} />
           </div>
         )}
 
@@ -195,10 +222,13 @@ const Discover = () => {
           </h2>
           {regularCampaigns.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {regularCampaigns.map((campaign) => {
-                console.log("Rendering campaign:", campaign); // 👈 Add this line
-                return <CampaignCard key={campaign._id} campaign={campaign} />;
-              })}
+              {regularCampaigns.map((campaign) => (
+                <CampaignCard 
+                  key={campaign._id} 
+                  campaign={campaign}
+                  currentUser={user}
+                />
+              ))}
             </div>
           ) : (
             <div className="text-center py-12">

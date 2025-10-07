@@ -10,24 +10,41 @@ import {
   ArrowDownRight
 } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts';
-import adminData from '../../data/adminData.json';
+import { useAuth } from '../../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const AdminDashboard = () => {
+  const { user } = useAuth();
+  const navigate = useNavigate();
   const [stats, setStats] = useState(null);
   const [monthlyData, setMonthlyData] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate API call to fetch admin data
+    if (!user || user.role !== 'admin') {
+      navigate('/not-authorized');
+      return;
+    }
+
     const fetchAdminData = async () => {
       try {
-        // TODO: Replace with actual API call
-        // const response = await fetch('/api/admin/dashboard');
-        // const data = await response.json();
+        const { data } = await axios.get('http://localhost:5152/api/admin/stats', {
+          headers: {
+            Authorization: `Bearer ${user.token}`
+          }
+        });
         
-        // Using placeholder data
-        setStats(adminData.stats);
-        setMonthlyData(adminData.monthlyData);
+        setStats(data);
+        
+        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'];
+        const mockData = months.map(month => ({
+          month,
+          campaigns: Math.floor(Math.random() * 20) + 5,
+          users: Math.floor(Math.random() * 50) + 10
+        }));
+        setMonthlyData(mockData);
+        
         setLoading(false);
       } catch (error) {
         console.error('Error fetching admin data:', error);
@@ -36,41 +53,13 @@ const AdminDashboard = () => {
     };
 
     fetchAdminData();
-  }, []);
+  }, [user, navigate]);
 
   const statCards = [
-    {
-      title: 'Total Users',
-      value: stats?.totalUsers?.toLocaleString() || '0',
-      change: '+12.5%',
-      changeType: 'increase',
-      icon: Users,
-      color: 'blue'
-    },
-    {
-      title: 'Total Campaigns',
-      value: stats?.totalCampaigns?.toLocaleString() || '0',
-      change: '+8.2%',
-      changeType: 'increase',
-      icon: FileText,
-      color: 'emerald'
-    },
-    {
-      title: 'Active Campaigns',
-      value: stats?.activeCampaigns?.toLocaleString() || '0',
-      change: '+15.3%',
-      changeType: 'increase',
-      icon: TrendingUp,
-      color: 'purple'
-    },
-    {
-      title: 'Total Donations',
-      value: `₹${(stats?.totalDonations / 100000)?.toFixed(1)}L` || '₹0',
-      change: '+23.1%',
-      changeType: 'increase',
-      icon: DollarSign,
-      color: 'orange'
-    }
+    { title: 'Total Users', value: stats?.totalUsers?.toLocaleString() || '0', change: '+12.5%', changeType: 'increase', icon: Users, color: 'blue' },
+    { title: 'Total Campaigns', value: stats?.totalCampaigns?.toLocaleString() || '0', change: '+8.2%', changeType: 'increase', icon: FileText, color: 'emerald' },
+    { title: 'Approved Campaigns', value: stats?.approvedCampaigns?.toLocaleString() || '0', change: '+15.3%', changeType: 'increase', icon: CheckCircle, color: 'purple' },
+    { title: 'Total Donations (received)', value: `₹${stats?.totalDonations?.toLocaleString() || '0'}`, change: '+23.1%', changeType: 'increase', icon: DollarSign, color: 'orange' }
   ];
 
   if (loading) {

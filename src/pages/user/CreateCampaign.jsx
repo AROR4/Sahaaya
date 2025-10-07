@@ -17,6 +17,7 @@ const CreateCampaign = () => {
   const [formData, setFormData] = useState({
   title: '',
   description: '',
+  about: '',
   category: '',
   location: '',
   date: '',
@@ -77,7 +78,7 @@ useEffect(() => {
 }, [user]);
 
 
-  const handleIdUpload = async (e) => {
+const handleIdUpload = async (e) => {
   const file = e.target.files[0];
   if (!file) return;
 
@@ -152,6 +153,7 @@ useEffect(() => {
     const payload = {
       title: formData.title,
       description: formData.description,
+      about: formData.about,
       category: formData.category,
       location: formData.location,
       date: formData.date,
@@ -331,6 +333,19 @@ useEffect(() => {
           onChange={handleInputChange}
           required
           rows={4}
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg"
+        />
+      </div>
+
+      {/* About */}
+      <div>
+        <label className="text-sm font-medium text-gray-700 mb-2 block">About *</label>
+        <textarea
+          name="about"
+          value={formData.about}
+          onChange={handleInputChange}
+          required
+          rows={5}
           className="w-full px-4 py-3 border border-gray-300 rounded-lg"
         />
       </div>

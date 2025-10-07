@@ -1,8 +1,9 @@
 import axios from 'axios';
 
-export const uploadFile = async (file, token) => {
+export const cloudinaryupload = async (file, token) => {
   const formData = new FormData();
-  formData.append('govtId', file); 
+  formData.append('govtId', file); // or 'document', 'image', etc. based on backend
+
   try {
     if (!token) throw new Error('No auth token provided');
 
@@ -17,7 +18,7 @@ export const uploadFile = async (file, token) => {
       }
     );
 
-
+    // Assuming the backend returns { url: '...' } in response
     return response.data.url;
   } catch (error) {
     console.error('File upload failed:', error);

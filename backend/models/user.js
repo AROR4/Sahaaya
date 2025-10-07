@@ -31,6 +31,12 @@ const userSchema = new mongoose.Schema({
   isGovtIdVerified: {
     type: Boolean,
     default: false
+  },
+
+  totalDonated: {
+    type: Number,
+    default: 0,
+    min: 0
   }
 }, { timestamps: true });
 

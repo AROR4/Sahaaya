@@ -5,7 +5,14 @@ import { useAuth } from '../context/AuthContext';
 
 const NavbarAuthSection = () => {
   const { user, logout } = useAuth();
+  const navigate = useNavigate();
   const [showMenu, setShowMenu] = useState(false);
+
+  const handleLogout = () => {
+    logout();
+    setShowMenu(false);
+    navigate('/');
+  };
 
   return (
     <div className="hidden md:flex items-center space-x-4">
@@ -32,9 +39,25 @@ const NavbarAuthSection = () => {
           </button>
 
           {showMenu && (
-            <div className="absolute right-0 mt-2 w-40 bg-white border border-gray-200 shadow-lg rounded-md z-10">
+            <div className="absolute right-0 mt-2 w-44 bg-white border border-gray-200 shadow-lg rounded-md z-10">
+              <Link
+                to="/profile"
+                onClick={() => setShowMenu(false)}
+                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+              >
+                Profile
+              </Link>
+              {user.role === 'admin' && (
+                <Link
+                  to="/admin"
+                  onClick={() => setShowMenu(false)}
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+                >
+                  Admin
+                </Link>
+              )}
               <button
-                onClick={logout}
+                onClick={handleLogout}
                 className="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50"
               >
                 Log Out

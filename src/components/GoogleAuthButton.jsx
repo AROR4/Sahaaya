@@ -11,6 +11,7 @@ const GoogleAuthButton = ({ endpoint, onSuccess }) => {
         client_id: GOOGLE_CLIENT_ID,
         callback: async (response) => {
           try {
+            console.log("Google response:", response.credential);
             const res = await fetch(endpoint, {
               method: "POST",
               headers: { "Content-Type": "application/json" },

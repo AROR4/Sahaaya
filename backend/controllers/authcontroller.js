@@ -1,10 +1,10 @@
+// authController.js
 const { OAuth2Client } = require('google-auth-library');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
-// Verifies Google ID Token
 async function verifyGoogleToken(token) {
   try {
     const ticket = await client.verifyIdToken({
@@ -18,7 +18,9 @@ async function verifyGoogleToken(token) {
   }
 }
 
-// Signup Controller
+// ✅ Export verifyGoogleToken separately for mocking
+exports.verifyGoogleToken = verifyGoogleToken;
+
 exports.signup = async (req, res) => {
   const { credential } = req.body;
   const { payload, error } = await verifyGoogleToken(credential);
@@ -62,9 +64,7 @@ exports.signup = async (req, res) => {
   }
 };
 
-// Login Controller
 exports.login = async (req, res) => {
-    console.log("hello");
   const { credential } = req.body;
   const { payload, error } = await verifyGoogleToken(credential);
 
@@ -80,7 +80,6 @@ exports.login = async (req, res) => {
     const token = jwt.sign({ email: existingUser.email }, process.env.JWT_SECRET, {
       expiresIn: '1d',
     });
-    console.log("token", token);
 
     res.status(200).json({
       user: {

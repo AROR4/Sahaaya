@@ -11,6 +11,11 @@ const campaignSchema = new mongoose.Schema({
     required: true
   },
 
+  about : {
+    type: String,
+    required: true
+  },
+
   category: {
     type: String,
     enum: ['Environment', 'Education', 'Animal Welfare', 'Healthcare', 'Other'],
@@ -85,7 +90,41 @@ const campaignSchema = new mongoose.Schema({
   popularity_score: {
     type: Number,
     default: 0
-  }
+  },
+
+  donations: [{
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      required: true
+    },
+    amount: {
+      type: Number,
+      required: true,
+      min: 0
+    },
+    date: {
+      type: Date,
+      default: Date.now
+    }
+  }],
+
+  goals: [{
+    description: {
+      type: String,
+      required: true
+    },
+    targetAmount: {
+      type: Number,
+      required: true,
+      min: 0
+    },
+    collectedAmount: {
+      type: Number,
+      default: 0,
+      min: 0
+    }
+  }]
 
 }, {
   timestamps: true
